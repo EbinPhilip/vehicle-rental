@@ -29,3 +29,6 @@ build/
 .project
 .settings/
 .gradle/
+
+.vscode/
+jacoco*
