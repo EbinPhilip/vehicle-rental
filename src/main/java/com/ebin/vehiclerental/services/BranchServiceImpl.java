@@ -26,8 +26,6 @@ public class BranchServiceImpl implements BranchService {
     public Branch getBranch(String branchName) {
 
         return branchRepository.findByBranchName(branchName)
-                .orElseThrow(() -> {
-                    throw new BranchNotFoundException();
-                });
+                .orElseThrow(BranchNotFoundException::new);
     }
 }
