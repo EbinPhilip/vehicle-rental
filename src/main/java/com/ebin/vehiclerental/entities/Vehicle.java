@@ -9,7 +9,7 @@ public class Vehicle {
 
     @Getter
     @NonNull
-    private String id;
+    private String vehicleId;
 
     @Getter
     @NonNull
@@ -17,7 +17,7 @@ public class Vehicle {
 
     @Getter
     @NonNull
-    private String type;
+    private String vehicleType;
 
     @Getter
     @NonNull

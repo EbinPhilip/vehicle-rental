@@ -19,6 +19,10 @@ public class Booking {
 
     @Getter
     @NonNull
+    private String vehicleType;
+
+    @Getter
+    @NonNull
     private String branchId;
 
     @Getter
