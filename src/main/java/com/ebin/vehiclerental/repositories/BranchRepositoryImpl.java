@@ -19,6 +19,7 @@ public class BranchRepositoryImpl implements BranchRepository {
     @Override
     public Branch save(Branch branch) {
 
-        return branches.put(branch.getName(), branch);
+        branches.put(branch.getName(), branch);
+        return branch;
     }
 }

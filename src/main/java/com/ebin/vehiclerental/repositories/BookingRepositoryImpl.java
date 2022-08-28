@@ -45,6 +45,7 @@ public class BookingRepositoryImpl implements BookingRepository {
     @Override
     public Booking save(Booking booking) {
 
-        return bookingMap.put(booking.getBookingId(), booking);
+        bookingMap.put(booking.getBookingId(), booking);
+        return booking;
     }
 }

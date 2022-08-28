@@ -41,6 +41,7 @@ public class VehicleRepositoryImpl implements VehicleRepository {
     @Override
     public Vehicle save(Vehicle vehicle) {
 
-        return vehicleMap.put(vehicle.getVehicleId(), vehicle);
+        vehicleMap.put(vehicle.getVehicleId(), vehicle);
+        return vehicle;
     }
 }
