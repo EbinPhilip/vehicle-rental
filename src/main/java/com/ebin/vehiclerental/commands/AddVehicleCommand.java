@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.NonNull;
 
 @AllArgsConstructor
-public class AddVehicle implements Command {
+public class AddVehicleCommand implements Command {
   
     @NonNull
     VehicleService vehicleService;

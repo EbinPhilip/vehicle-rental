@@ -9,7 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.NonNull;
 
 @AllArgsConstructor
-public class DisplayVehicles implements Command {
+public class DisplayVehiclesCommand implements Command {
 
     @NonNull
     private final VehicleService vehicleService;

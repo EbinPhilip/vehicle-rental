@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.NonNull;
 
 @AllArgsConstructor
-public class Book implements Command {
+public class BookCommand implements Command {
 
     @NonNull
     private final BookingService bookingService;

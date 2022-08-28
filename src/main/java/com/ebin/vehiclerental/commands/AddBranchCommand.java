@@ -10,7 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.NonNull;
 
 @AllArgsConstructor
-public class AddBranch implements Command {
+public class AddBranchCommand implements Command {
 
     @NonNull
     BranchService branchService;
