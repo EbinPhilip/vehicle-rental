@@ -15,6 +15,8 @@ import com.ebin.vehiclerental.services.BookingService;
 import com.ebin.vehiclerental.services.BookingServiceImpl;
 import com.ebin.vehiclerental.services.BranchService;
 import com.ebin.vehiclerental.services.BranchServiceImpl;
+import com.ebin.vehiclerental.services.DynamicPricingDecorator;
+import com.ebin.vehiclerental.services.PriceSortDecorator;
 import com.ebin.vehiclerental.services.VehicleAvailabilityService;
 import com.ebin.vehiclerental.services.VehicleAvailabilityServiceImpl;
 import com.ebin.vehiclerental.utils.bookingstrategy.BookingStrategy;
@@ -29,14 +31,17 @@ public class ApplicationConfig {
     private final BookingRepository bookingRepository = new BookingRepositoryImpl();
 
     private final BranchService branchService = new BranchServiceImpl(branchRepository, vehicleRepository);
-    private final VehicleAvailabilityService vehicleService = new VehicleAvailabilityServiceImpl(bookingRepository, vehicleRepository);
     private final BookingStrategy bookingStrategy = new LowestPriceBooking();
-    private final BookingService bookingService = new BookingServiceImpl(bookingRepository, vehicleService, bookingStrategy);
+    private final VehicleAvailabilityService vehicleService = new VehicleAvailabilityServiceImpl(bookingRepository, vehicleRepository);
+    private final DynamicPricingDecorator pricingDecorator = new DynamicPricingDecorator(vehicleService, vehicleRepository, branchService);
+    private final PriceSortDecorator priceSortDecorator = new PriceSortDecorator(pricingDecorator);
+    private final BookingService bookingService = new BookingServiceImpl(bookingRepository, priceSortDecorator, bookingStrategy);
 
     private final AddBranchCommand addBranchCommand = new AddBranchCommand(branchService);
     private final AddVehicleCommand addVehicleCommand = new AddVehicleCommand(branchService);
     private final BookCommand bookCommand = new BookCommand(bookingService);
-    private final DisplayVehiclesCommand displayVehiclesCommand = new DisplayVehiclesCommand(vehicleService);
+    private final DisplayVehiclesCommand displayVehiclesCommand = new DisplayVehiclesCommand(
+                new PriceSortDecorator(vehicleService));
 
     @Getter
     private final CommandExecutor executor = new CommandExecutor();
