@@ -19,7 +19,7 @@ public class BookingServiceImpl implements BookingService {
     private BookingRepository bookingRepository;
 
     @NonNull
-    private VehicleService vehicleService;
+    private VehicleAvailabilityService vehicleService;
 
     @NonNull
     private BookingStrategy bookingStrategy;

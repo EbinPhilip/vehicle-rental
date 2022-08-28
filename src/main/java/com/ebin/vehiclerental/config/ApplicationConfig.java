@@ -15,8 +15,8 @@ import com.ebin.vehiclerental.services.BookingService;
 import com.ebin.vehiclerental.services.BookingServiceImpl;
 import com.ebin.vehiclerental.services.BranchService;
 import com.ebin.vehiclerental.services.BranchServiceImpl;
-import com.ebin.vehiclerental.services.VehicleService;
-import com.ebin.vehiclerental.services.VehicleServiceImpl;
+import com.ebin.vehiclerental.services.VehicleAvailabilityService;
+import com.ebin.vehiclerental.services.VehicleAvailabilityServiceImpl;
 import com.ebin.vehiclerental.utils.bookingstrategy.BookingStrategy;
 import com.ebin.vehiclerental.utils.bookingstrategy.LowestPriceBooking;
 
@@ -28,13 +28,13 @@ public class ApplicationConfig {
     private final VehicleRepository vehicleRepository = new VehicleRepositoryImpl();
     private final BookingRepository bookingRepository = new BookingRepositoryImpl();
 
-    private final BranchService branchService = new BranchServiceImpl(branchRepository);
-    private final VehicleService vehicleService = new VehicleServiceImpl(branchService, bookingRepository, vehicleRepository);
+    private final BranchService branchService = new BranchServiceImpl(branchRepository, vehicleRepository);
+    private final VehicleAvailabilityService vehicleService = new VehicleAvailabilityServiceImpl(bookingRepository, vehicleRepository);
     private final BookingStrategy bookingStrategy = new LowestPriceBooking();
     private final BookingService bookingService = new BookingServiceImpl(bookingRepository, vehicleService, bookingStrategy);
 
     private final AddBranchCommand addBranchCommand = new AddBranchCommand(branchService);
-    private final AddVehicleCommand addVehicleCommand = new AddVehicleCommand(vehicleService);
+    private final AddVehicleCommand addVehicleCommand = new AddVehicleCommand(branchService);
     private final BookCommand bookCommand = new BookCommand(bookingService);
     private final DisplayVehiclesCommand displayVehiclesCommand = new DisplayVehiclesCommand(vehicleService);
 

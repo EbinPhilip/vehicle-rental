@@ -4,10 +4,7 @@ import java.util.List;
 
 import com.ebin.vehiclerental.entities.Vehicle;
 
-public interface VehicleService {
-
-    public void addVehicleToBranch(String branchName, String vehicleType,
-            String vehicleId, double price);
+public interface VehicleAvailabilityService {
 
     public List<Vehicle> getAvailableByBranch(String branchId, int startTime, int endTime);
 

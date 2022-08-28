@@ -2,7 +2,7 @@ package com.ebin.vehiclerental.commands;
 
 import java.util.List;
 
-import com.ebin.vehiclerental.services.VehicleService;
+import com.ebin.vehiclerental.services.BranchService;
 
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
@@ -11,7 +11,7 @@ import lombok.NonNull;
 public class AddVehicleCommand implements Command {
   
     @NonNull
-    VehicleService vehicleService;
+    BranchService branchService;
 
     @Override
     public void run(List<String> tokens) {
@@ -22,7 +22,7 @@ public class AddVehicleCommand implements Command {
             String vehicleId = tokens.get(3).trim();
             double price = Double.valueOf(tokens.get(4).trim());
 
-            vehicleService.addVehicleToBranch(branchName, vehicleType, vehicleId, price);
+            branchService.addVehicleToBranch(branchName, vehicleType, vehicleId, price);
             System.out.println("TRUE");
         } catch (RuntimeException e) {
             System.out.println("FALSE");

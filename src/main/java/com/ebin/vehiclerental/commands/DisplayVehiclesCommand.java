@@ -3,7 +3,7 @@ package com.ebin.vehiclerental.commands;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.ebin.vehiclerental.services.VehicleService;
+import com.ebin.vehiclerental.services.VehicleAvailabilityService;
 
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
@@ -12,7 +12,7 @@ import lombok.NonNull;
 public class DisplayVehiclesCommand implements Command {
 
     @NonNull
-    private final VehicleService vehicleService;
+    private final VehicleAvailabilityService vehicleService;
 
     @Override
     public void run(List<String> tokens) {
