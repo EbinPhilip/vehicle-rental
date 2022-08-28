@@ -6,8 +6,6 @@ import com.ebin.vehiclerental.entities.Vehicle;
 
 public interface VehicleRepository {
 
-    public Vehicle findByVehicleId(String vehicleId);
-
     public List<Vehicle> findByBranchId(String branchId);
 
     public List<Vehicle> findByBranchIdAndVehicleType(String branchId, String vehicleType);

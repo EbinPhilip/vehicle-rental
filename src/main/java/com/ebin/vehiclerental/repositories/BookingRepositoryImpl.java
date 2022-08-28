@@ -13,12 +13,6 @@ public class BookingRepositoryImpl implements BookingRepository {
     private Map<UUID, Booking> bookingMap = new HashMap<>();
 
     @Override
-    public Booking findByBookingId(String bookingId) {
-
-        return bookingMap.get(UUID.fromString(bookingId));
-    }
-
-    @Override
     public List<Booking> findByBranchIdAndWithinTime(String branchId, int startTime, int endTime) {
 
         return bookingMap.values()

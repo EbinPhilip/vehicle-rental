@@ -12,12 +12,6 @@ public class VehicleRepositoryImpl implements VehicleRepository {
     private Map<String, Vehicle> vehicleMap = new HashMap<>();
 
     @Override
-    public Vehicle findByVehicleId(String vehicleId) {
-
-        return vehicleMap.get(vehicleId);
-    }
-
-    @Override
     public List<Vehicle> findByBranchId(String branchId) {
 
         return vehicleMap.values()

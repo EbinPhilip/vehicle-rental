@@ -6,8 +6,6 @@ import com.ebin.vehiclerental.entities.Booking;
 
 public interface BookingRepository {
 
-    public Booking findByBookingId(String bookingId);
-
     public List<Booking> findByBranchIdAndWithinTime(String branchId, int startTime, int endTime);
 
     public List<Booking> findByBranchIdAndTypeAndWithinTime(String branchId, String vehicleType,

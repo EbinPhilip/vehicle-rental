@@ -2,6 +2,7 @@ package com.ebin.vehiclerental.repositories;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import com.ebin.vehiclerental.entities.Branch;
 
@@ -10,15 +11,9 @@ public class BranchRepositoryImpl implements BranchRepository {
     private Map<String, Branch> branches = new HashMap<>();
 
     @Override
-    public Branch findByBranchName(String branchName) {
+    public Optional<Branch> findByBranchName(String branchName) {
 
-        return branches.values()
-                .stream()
-                .filter((i) -> {
-                    return (i.getName().equals(branchName));
-                })
-                .findFirst()
-                .orElseThrow(RuntimeException::new);
+        return Optional.ofNullable(branches.get(branchName));
     }
 
     @Override
