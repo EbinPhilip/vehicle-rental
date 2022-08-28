@@ -33,6 +33,12 @@ public class VehicleRepositoryImpl implements VehicleRepository {
     }
 
     @Override
+    public int countByBranchIdAndVehicleType(String branchId, String vehicleType) {
+
+        return findByBranchIdAndVehicleType(branchId, vehicleType).size();
+    }
+
+    @Override
     public Vehicle save(Vehicle vehicle) {
 
         return vehicleMap.put(vehicle.getVehicleId(), vehicle);

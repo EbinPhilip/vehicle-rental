@@ -10,5 +10,7 @@ public interface VehicleRepository {
 
     public List<Vehicle> findByBranchIdAndVehicleType(String branchId, String vehicleType);
 
+    public int countByBranchIdAndVehicleType(String branchId, String vehicleType);
+
     public Vehicle save(Vehicle vehicle);
 }
